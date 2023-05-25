@@ -6,27 +6,17 @@ const bodyEl = document.querySelector("#root");
 
 const galleryContainer = document.querySelector('.gallery');
 
-function createGalleryItemMarkup(item) {
-  const { preview, original, description } = item;
-
-  return `
-    <li class="gallery__item">
-      <a class="gallery__link" href="${original}">
-        <img class="gallery__image" src="${preview}" data-source="${original}" alt="${description}" />
-      </a>
-    </li>
-  `;
-}
-
-function renderGalleryItems(items) {
-  const galleryItemsMarkup = items.map(createGalleryItemMarkup).join('');
-
-  galleryContainer.insertAdjacentHTML('beforeend', galleryItemsMarkup);
-}
-
-renderGalleryItems(galleryItems);
+const galleryItem = galleryItems.map(({ preview, original, description }) => {
+  const galleryList = `<li class="gallery__item">
+    <a class="gallery__link" href="${original}">
+      <img class="gallery__image" src="${preview}" data-source="${original}" alt="${description}" />
+    </a>
+  </li>`;
+  return galleryList;
+});
+galleryContainer.insertAdjacentHTML("beforeend", galleryItem.join(""));
 
 let lightbox = new SimpleLightbox('.gallery a', {
-    // captionsData: 'alt',
+    captionsData: 'alt',
     captionDelay: 250,
 });
