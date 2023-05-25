@@ -1,6 +1,6 @@
-import { galleryItems } from './gallery-items.js';
 import SimpleLightbox from "simplelightbox";
 import SimpleLightbox from "simplelightbox/dist/simple-lightbox.esm";
+import { galleryItems } from './gallery-items.js';
 // Change code below this line
 const bodyEl = document.querySelector("#root");
 
@@ -27,6 +27,6 @@ function renderGalleryItems(items) {
 renderGalleryItems(galleryItems);
 
 let lightbox = new SimpleLightbox('.gallery a', {
-    captionsData: 'alt',
+    // captionsData: 'alt',
     captionDelay: 250,
 });
